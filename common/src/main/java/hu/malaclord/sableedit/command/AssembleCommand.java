@@ -43,15 +43,10 @@ public class AssembleCommand implements hu.malaclord.sableedit.command.Command {
         Command<CommandSourceStack> command = (ctx) -> {
             Actor actor = Adaptor.getInstance().adaptCommandSource(ctx.getSource());
 
-            ctx.getSource().sendSystemMessage(Component.literal("yup"));
-
             if (!actor.isPlayer()) return -1;
 
             if (WorldEdit.getInstance().getPlatformManager().createProxyActor(actor) instanceof PlayerProxyExtended proxy) {
                 LocationContext context = proxy.sableEdit$getContext();
-
-                //if (!context.isLevel()) return 0;
-
                 LocalSession session = WorldEdit.getInstance().getSessionManager().getIfPresent(actor);
                 if (session == null) return 0;
 
