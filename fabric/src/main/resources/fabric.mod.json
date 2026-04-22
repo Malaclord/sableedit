@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "sableedit",
+  "version": "${version}",
+  "name": "SableEdit",
+  "description": "",
+  "authors": [
+    "Malclord"
+  ],
+  "contact": {
+    "homepage": "malaclord.github.io"
+  },
+  "license": "MIT",
+  "icon": "assets/sableedit/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "hu.malaclord.sableedit.fabric.SableeditFabric"
+    ],
+    "client": [
+      "hu.malaclord.sableedit.fabric.client.SableeditFabricClient"
+    ]
+  },
+  "mixins": [
+    "sableedit.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.2",
+    "minecraft": "~1.21.1",
+    "java": ">=21"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
