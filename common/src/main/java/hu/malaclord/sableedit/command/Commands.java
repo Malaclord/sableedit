@@ -16,11 +16,8 @@ public class Commands {
         return command;
     }
 
-    private static boolean registered = false;
 
     public static void registerAll(CommandDispatcher<CommandSourceStack> commandDispatcher) {
-        if (registered) throw new IllegalStateException();
-        registered = true;
         commands.forEach(command -> command.register(commandDispatcher));
     }
 }
