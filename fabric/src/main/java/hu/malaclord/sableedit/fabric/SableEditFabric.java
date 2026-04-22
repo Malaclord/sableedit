@@ -1,9 +1,9 @@
 package hu.malaclord.sableedit.fabric;
 
-import hu.malaclord.sableedit.Sableedit;
+import hu.malaclord.sableedit.SableEdit;
 import net.fabricmc.api.ModInitializer;
 
-public final class SableeditFabric implements ModInitializer {
+public final class SableEditFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         // This code runs as soon as Minecraft is in a mod-load-ready state.
@@ -11,6 +11,6 @@ public final class SableeditFabric implements ModInitializer {
         // Proceed with mild caution.
 
         // Run our common setup.
-        Sableedit.init();
+        SableEdit.init(new FabricAdaptor());
     }
 }

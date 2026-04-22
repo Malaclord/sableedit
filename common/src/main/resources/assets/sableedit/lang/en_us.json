@@ -1,0 +1,6 @@
+{
+  "sableedit.selection.explain.changed": "Selection context changed to %s.",
+  "sableedit.selection.explain.sublevel": "sub-level %s",
+  "sableedit.selection.explain.world": "world",
+  "sableedit.selection.error.outside": "Secondary selection point cannot be outside context!"
+}

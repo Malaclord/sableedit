@@ -22,11 +22,13 @@ configurations {
         canBeResolved = true
         canBeConsumed = false
     }
+
+
 }
 
 dependencies {
     modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
-
+    modCompileOnly("com.sk89q.worldedit:worldedit-fabric-mc$worldedit_minecraft_version:$worldedit_version")
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
@@ -36,7 +38,11 @@ processResources {
     inputs.property 'version', project.version
 
     filesMatching('fabric.mod.json') {
-        expand version: project.version
+        expand (version: project.version,
+                sable_version: sable_version,
+                worldedit_version: worldedit_version,
+                author: mod_author,
+                description: mod_description)
     }
 }
 

@@ -3,9 +3,9 @@
   "id": "sableedit",
   "version": "${version}",
   "name": "SableEdit",
-  "description": "",
+  "description": "${description}",
   "authors": [
-    "Malclord"
+    "${author}"
   ],
   "contact": {
     "homepage": "malaclord.github.io"
@@ -15,10 +15,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "hu.malaclord.sableedit.fabric.SableeditFabric"
+      "hu.malaclord.sableedit.fabric.SableEditFabric"
     ],
     "client": [
-      "hu.malaclord.sableedit.fabric.client.SableeditFabricClient"
+      "hu.malaclord.sableedit.fabric.client.SableEditFabricClient"
     ]
   },
   "mixins": [
@@ -27,7 +27,9 @@
   "depends": {
     "fabricloader": ">=0.19.2",
     "minecraft": "~1.21.1",
-    "java": ">=21"
+    "java": ">=21",
+    "sable": ">=${sable_version}",
+    "worldedit": ">=${worldedit_version}"
   },
   "suggests": {
     "another-mod": "*"

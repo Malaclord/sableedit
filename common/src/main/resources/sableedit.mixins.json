@@ -6,6 +6,14 @@
   "client": [
   ],
   "mixins": [
+    "ActorSelectorLimitsAccessor",
+    "BlockVector3Mixin",
+    "EditSessionMixin",
+    "PlayerProxyMixin",
+    "SelectionCommandsMixin",
+    "selector.CommonRegionSelectorMixin",
+    "selector.CuboidRegionSelectorMixin",
+    "selector.Polygonal2DRegionSelectorMixin"
   ],
   "injectors": {
     "defaultRequire": 1

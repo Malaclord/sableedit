@@ -1,4 +1,4 @@
-package hu.malaclord.sableedit.mixin;
+package hu.malaclord.sableedit;
 
 import com.sk89q.worldedit.world.World;
 import dev.ryanhcode.sable.companion.SubLevelAccess;
@@ -12,8 +12,11 @@ public interface RegionSelectorExtended {
     void    sableEdit$markOutsideSublevel(boolean b);
     boolean sableEdit$outsideSublevel();
 
-    void    sableEdit$setCurrentSubLevel(@Nullable UUID uuid);
-    UUID    sableEdit$getCurrentSubLevel();
+    void    sableEdit$clear();
+
+
+    void    sableEdit$setCurrentSubLevel(@Nullable SubLevelAccess access);
+    SubLevelAccess    sableEdit$getCurrentSubLevel();
 
     World sableEdit$getWorld();
 }

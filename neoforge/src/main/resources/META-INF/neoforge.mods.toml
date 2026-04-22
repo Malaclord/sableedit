@@ -7,9 +7,9 @@ license = "MIT"
 modId = "sableedit"
 version = "${version}"
 displayName = "SableEdit"
-authors = "Malclord"
+authors = "${author}"
 description = '''
-
+${description}
 '''
 #logoFile = ""
 
@@ -27,6 +27,29 @@ versionRange = "[1.21.1,)"
 ordering = "NONE"
 side = "BOTH"
 
+[[dependencies.sableedit]]
+modId = "sable"
+type = "required"
+versionRange = "[${sable_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.sableedit]]
+modId = "worldedit"
+type = "required"
+versionRange = "[${worldedit_version},)"
+ordering = "NONE"
+side = "SERVER"
+
+[[dependencies.sableedit]]
+modId = "worldeditcui"
+type = "optional"
+versionRange = "[${worldeditcui_version},)"
+ordering = "NONE"
+side = "CLIENT"
 
 [[mixins]]
 config = "sableedit.mixins.json"
+
+[[mixins]]
+config = "sableedit.neoforge.mixins.json"

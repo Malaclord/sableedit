@@ -29,11 +29,45 @@ subprojects {
         // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
         // See https://docs.gradle.org/current/userguide/declaring_repositories.html
         // for more information about repositories.
+        maven {
+            name = 'BlameJared Maven (CrT / Bookshelf)'
+            url = 'https://maven.blamejared.com'
+        }
+
+        maven {
+            name = "RyanHCode Maven"
+            url = "https://maven.ryanhcode.dev/releases"
+        }
+
+        maven {
+            name = "enginehub"
+            url = "https://maven.enginehub.org/repo/"
+        }
+
+        exclusiveContent {
+            forRepository {
+                maven {
+                    name = "Modrinth"
+                    url = "https://api.modrinth.com/maven"
+                }
+            }
+            filter {
+                includeGroup "maven.modrinth"
+            }
+        }
+
+        maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // ForgeConfigAPIPort
+
     }
 
     dependencies {
         minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
         mappings loom.officialMojangMappings()
+
+        api "dev.ryanhcode.sable:sable-common-${minecraft_version}:${sable_version}"
+
+        compileOnly "com.sk89q.worldedit:worldedit-core:$worldedit_version"
+        api "dev.ryanhcode.sable-companion:sable-companion-common-${project.minecraft_version}:${project.sable_companion_version}"
     }
 
     java {

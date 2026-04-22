@@ -1,0 +1,22 @@
+{
+  "required": true,
+  "package": "hu.malaclord.sableedit.neoforge.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "client": [
+    "client.BufferBuilderRenderSinkMixin",
+    "client.CUIRenderContextMixin",
+    "client.region.CommonRegionMixin",
+    "client.region.CuboidRegionMixin",
+    "client.region.CylinderRegionMixin",
+    "client.region.EllipsoidRegionMixin",
+    "client.region.PolyRegionMixin",
+    "client.region.RegionMixin",
+    "client.region.PolyhedronRegionMixin"
+  ],
+  "mixins": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
