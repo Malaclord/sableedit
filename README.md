@@ -16,7 +16,7 @@ cd sableedit
     ```
     neoforge/build/libs/SableEdit-neoforge-{version}.jar
     ```
-  - ~~Fabric~~: (Fabric version isn't complete yet)
+  - ~~Fabric~~: (Fabric version hasn't been started yet)
     ```
     fabric/build/libs/SableEdit-fabric-{version}.jar
     ``` 
