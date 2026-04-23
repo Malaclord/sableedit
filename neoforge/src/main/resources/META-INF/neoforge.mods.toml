@@ -11,6 +11,7 @@ authors = "${author}"
 description = '''
 ${description}
 '''
+logoFile = "assets/sableedit/icon.png"
 #logoFile = ""
 
 [[dependencies.sableedit]]
