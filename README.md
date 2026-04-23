@@ -6,14 +6,14 @@ A Minecraft mod providing compability between [Sable](https://github.com/ryanhco
 
 ## Building
 1. Clone the repository 
-```
-git clone https://github.com/Malaclord/sableedit
-cd sableedit 
-```
-2. Build with gradle
-```
-./gradlew build
-```
+    ```
+    git clone https://github.com/Malaclord/sableedit
+    cd sableedit 
+    ```
+2. Build with Gradle
+    ```
+    ./gradlew build
+    ```
 3. Mod file can be found at
   - NeoForge:
     ```
