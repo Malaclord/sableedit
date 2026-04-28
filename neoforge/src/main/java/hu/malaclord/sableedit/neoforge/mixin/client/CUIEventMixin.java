@@ -25,7 +25,6 @@ public abstract class CUIEventMixin {
         try {
             double d = Double.parseDouble(this.params[index]);
             cir.setReturnValue((int)Math.round(d));
-            return;
         } catch (NumberFormatException ignored) { }
     }
 }
