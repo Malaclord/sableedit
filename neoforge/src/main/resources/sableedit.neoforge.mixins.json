@@ -12,7 +12,8 @@
     "client.region.EllipsoidRegionMixin",
     "client.region.PolyRegionMixin",
     "client.region.RegionMixin",
-    "client.region.PolyhedronRegionMixin"
+    "client.region.PolyhedronRegionMixin",
+    "client.CUIEventMixin"
   ],
   "mixins": [
   ],
