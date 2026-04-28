@@ -1,5 +1,5 @@
 # SableEdit
-A Minecraft mod providing compability between [Sable](https://github.com/ryanhcode/sable) and [WorldEdit](https://github.com/EngineHub/WorldEdit) (and optionally [WorldEdit CUI](https://github.com/EngineHub/WorldEditCUI)).
+A Minecraft mod providing compatibility between [Sable](https://github.com/ryanhcode/sable) and [WorldEdit](https://github.com/EngineHub/WorldEdit) (and optionally [WorldEdit CUI](https://github.com/EngineHub/WorldEditCUI)).
 
 > [!WARNING]
 > This mod is in very early development, expect many issues!
