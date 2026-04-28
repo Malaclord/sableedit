@@ -12,8 +12,11 @@
     "PlayerProxyMixin",
     "SelectionCommandsMixin",
     "selector.CommonRegionSelectorMixin",
-    "selector.CuboidRegionSelectorMixin",
-    "selector.Polygonal2DRegionSelectorMixin"
+    "selector.CuboidAndConvexPolyhedralRegionSelectorMixin",
+    "selector.CylinderRegionSelectorMixin",
+    "selector.EllipsoidRegionSelectorMixin",
+    "selector.Polygonal2DRegionSelectorMixin",
+    "selector.SphereRegionSelectorMixin"
   ],
   "injectors": {
     "defaultRequire": 1

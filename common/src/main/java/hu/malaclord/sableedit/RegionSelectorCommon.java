@@ -4,6 +4,7 @@ import com.sk89q.worldedit.LocalSession;
 import com.sk89q.worldedit.extension.platform.Actor;
 import com.sk89q.worldedit.extension.platform.permission.ActorSelectorLimits;
 import com.sk89q.worldedit.math.BlockVector3;
+import com.sk89q.worldedit.math.Vector3;
 import com.sk89q.worldedit.regions.selector.limit.SelectorLimits;
 import com.sk89q.worldedit.util.formatting.text.TextComponent;
 import com.sk89q.worldedit.util.formatting.text.TranslatableComponent;
@@ -95,6 +96,12 @@ public class RegionSelectorCommon {
 
     public static String blockVector3ToString(RegionSelectorExtended selector, BlockVector3 instance) {
         SubLevelAccess access = Adaptor.getInstance().getContaining(selector.sableEdit$getWorld(), instance);
+        if (access != null) return "*§n(" + instance.x() + ", " + instance.y() + ", " + instance.z() + ")§r";
+        else return instance.toString();
+    }
+
+    public static String posVector3ToString(RegionSelectorExtended selector, Vector3 instance) {
+        SubLevelAccess access = Adaptor.getInstance().getContaining(selector.sableEdit$getWorld(), instance.toBlockPoint());
         if (access != null) return "*§n(" + instance.x() + ", " + instance.y() + ", " + instance.z() + ")§r";
         else return instance.toString();
     }
