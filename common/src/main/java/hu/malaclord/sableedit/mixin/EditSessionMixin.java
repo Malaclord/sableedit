@@ -12,7 +12,6 @@ import hu.malaclord.sableedit.Adaptor;
 import hu.malaclord.sableedit.PlayerProxyExtended;
 import hu.malaclord.sableedit.context.LocationContext;
 import hu.malaclord.sableedit.context.SubLevelContext;
-import net.minecraft.world.level.ChunkPos;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -33,6 +32,7 @@ public class EditSessionMixin {
     @Final
     protected World world;
 
+    // TODO: Do this better plsplspls
     @Inject(method = "setBlock(Lcom/sk89q/worldedit/math/BlockVector3;Lcom/sk89q/worldedit/world/block/BlockStateHolder;Lcom/sk89q/worldedit/EditSession$Stage;)Z", at = @At("HEAD"))
     <B extends BlockStateHolder<B>> void setBlockInjectedDumbStupid(BlockVector3 position, B block, EditSession.Stage stage, CallbackInfoReturnable<Boolean> cir) {
         if (actor != null && actor.isPlayer() && actor instanceof PlayerProxyExtended playerProxy) {
