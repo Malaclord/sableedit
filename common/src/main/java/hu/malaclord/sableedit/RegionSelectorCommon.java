@@ -72,6 +72,14 @@ public class RegionSelectorCommon {
     }
 
     public static void explainPrimarySelection(RegionSelectorExtended selector, Actor player, LocalSession session, BlockVector3 pos, CallbackInfo ci) {
+        explainSelection(selector, player, session);
+    }
+
+    public static void explainRegionAdjust(RegionSelectorExtended selector, Actor player, LocalSession session, CallbackInfo ci) {
+        explainSelection(selector, player, session);
+    }
+
+    private static void explainSelection(RegionSelectorExtended selector, Actor player, LocalSession session) {
         if (selector.sableEdit$changedSublevel()) {
             session.dispatchCUISelection(player);
 

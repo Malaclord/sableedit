@@ -6,7 +6,6 @@ import com.sk89q.worldedit.world.World;
 import dev.ryanhcode.sable.companion.SubLevelAccess;
 import hu.malaclord.sableedit.RegionSelectorExtended;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 
 import javax.annotation.Nullable;
@@ -56,7 +55,7 @@ public abstract class CommonRegionSelectorMixin implements RegionSelectorExtende
     @Override
     public SubLevelAccess sableEdit$getCurrentSubLevel() {
         return sableEdit$subLevelAccess;
-    };
+    }
 
     @Override
     public World sableEdit$getWorld() {

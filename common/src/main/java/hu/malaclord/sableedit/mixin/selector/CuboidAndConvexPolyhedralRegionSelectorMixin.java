@@ -32,6 +32,11 @@ public abstract class CuboidAndConvexPolyhedralRegionSelectorMixin implements Re
         RegionSelectorCommon.explainPrimarySelection(this, player, session, pos, ci);
     }
 
+    @Inject(method = "explainRegionAdjust", at = @At(value = "INVOKE", target = "Lcom/google/common/base/Preconditions;checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;", ordinal = 1, shift = At.Shift.AFTER))
+    void explainRegionAdjustInjected(Actor player, LocalSession session, CallbackInfo ci) {
+        RegionSelectorCommon.explainRegionAdjust(this, player, session, ci);
+    }
+
     @Redirect(method = "explainPrimarySelection", at = @At(value = "INVOKE", target = "Lcom/sk89q/worldedit/math/BlockVector3;toString()Ljava/lang/String;"))
     String explainPrimarySelectionBlockVector3ToString(BlockVector3 instance) {
         return RegionSelectorCommon.blockVector3ToString(this, instance);
