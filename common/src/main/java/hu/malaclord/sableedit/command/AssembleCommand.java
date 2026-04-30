@@ -32,8 +32,13 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class AssembleCommand implements hu.malaclord.sableedit.command.Command {
+    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
     public void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         Command<CommandSourceStack> command = (ctx) -> {
             final Actor actor = Adaptor.getInstance().adaptCommandSource(ctx.getSource());
@@ -110,9 +115,10 @@ public class AssembleCommand implements hu.malaclord.sableedit.command.Command {
                     region.shift(newPoint.subtract(originalPoint));
 
                     selector.learnChanges();
-                    // TODO: delay this to only happen after sub-level is received by client
-                    //       im no networking professional
-                    selector.explainRegionAdjust(actor, session);
+                    // TODO: make this better this is terrible im so sorry
+                    scheduler.schedule(
+                            () -> selector.explainRegionAdjust(actor, session), 100, TimeUnit.MILLISECONDS
+                    );
                 } catch (IncompleteRegionException | RegionOperationException e) {
                     throw new RuntimeException(e);
                 }
