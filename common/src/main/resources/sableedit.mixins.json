@@ -15,6 +15,7 @@
     "selector.CuboidAndConvexPolyhedralRegionSelectorMixin",
     "selector.CylinderRegionSelectorMixin",
     "selector.EllipsoidRegionSelectorMixin",
+    "selector.ExtendingCuboidRegionSelectorMixin",
     "selector.Polygonal2DRegionSelectorMixin",
     "selector.SphereRegionSelectorMixin"
   ],

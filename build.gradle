@@ -2,6 +2,7 @@ plugins {
     id 'dev.architectury.loom' version '1.14-SNAPSHOT' apply false
     id 'architectury-plugin' version '3.4-SNAPSHOT'
     id 'com.github.johnrengelman.shadow' version '8.1.1' apply false
+    id 'maven-publish'
 }
 
 architectury {
@@ -95,10 +96,25 @@ subprojects {
 
         // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
         repositories {
-            // Add repositories to publish to here.
-            // Notice: This block does NOT have the same function as the block in the top level.
-            // The repositories here will be used for publishing your artifact, not for
-            // retrieving dependencies.
+            maven {
+                name = "malaclordSnapshots"
+                url = uri("https://mvn.malaclord.hu/snapshots")
+
+                credentials {
+                    username = findProperty("repoUsername") ?: System.getenv("MVN_USERNAME")
+                    password = findProperty("repoPassword") ?: System.getenv("MVN_PASSWORD")
+                }
+            }
+
+            maven {
+                name = "malaclordReleases"
+                url = uri("https://mvn.malaclord.hu/releases")
+
+                credentials {
+                    username = findProperty("repoUsername") ?: System.getenv("MVN_USERNAME")
+                    password = findProperty("repoPassword") ?: System.getenv("MVN_PASSWORD")
+                }
+            }
         }
     }
 }

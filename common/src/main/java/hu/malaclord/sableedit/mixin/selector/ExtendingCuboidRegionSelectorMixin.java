@@ -3,8 +3,7 @@ package hu.malaclord.sableedit.mixin.selector;
 import com.sk89q.worldedit.LocalSession;
 import com.sk89q.worldedit.extension.platform.Actor;
 import com.sk89q.worldedit.math.BlockVector3;
-import com.sk89q.worldedit.regions.selector.ConvexPolyhedralRegionSelector;
-import com.sk89q.worldedit.regions.selector.CuboidRegionSelector;
+import com.sk89q.worldedit.regions.selector.ExtendingCuboidRegionSelector;
 import com.sk89q.worldedit.regions.selector.limit.SelectorLimits;
 import hu.malaclord.sableedit.RegionSelectorCommon;
 import hu.malaclord.sableedit.RegionSelectorExtended;
@@ -15,26 +14,21 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin({CuboidRegionSelector.class, ConvexPolyhedralRegionSelector.class})
-public abstract class CuboidAndConvexPolyhedralRegionSelectorMixin implements RegionSelectorExtended {
-    @Inject(method = "selectPrimary", at = @At(value = "INVOKE", target = "Lcom/google/common/base/Preconditions;checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;", shift = At.Shift.AFTER))
+@Mixin(ExtendingCuboidRegionSelector.class)
+public abstract class ExtendingCuboidRegionSelectorMixin implements RegionSelectorExtended {
+    @Inject(method = "selectPrimary", at = @At("HEAD"))
     void selectPrimaryInjected(BlockVector3 position, SelectorLimits limits, CallbackInfoReturnable<Boolean> cir) {
         RegionSelectorCommon.selectPrimary(this, position, limits, cir);
     }
 
-    @Inject(method = "selectSecondary", at = @At(value = "INVOKE", target = "Lcom/google/common/base/Preconditions;checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;", shift = At.Shift.AFTER), cancellable = true)
+    @Inject(method = "selectSecondary", at = @At("HEAD"))
     void selectSecondaryInjected(BlockVector3 position, SelectorLimits limits, CallbackInfoReturnable<Boolean> cir) {
         RegionSelectorCommon.selectSecondary(this, position, limits, cir);
     }
 
-    @Inject(method = "explainPrimarySelection", at = @At(value = "INVOKE", target = "Lcom/google/common/base/Preconditions;checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;", ordinal = 2, shift = At.Shift.AFTER))
+    @Inject(method = "explainPrimarySelection", at = @At("HEAD"))
     void explainPrimarySelectionInjected(Actor player, LocalSession session, BlockVector3 pos, CallbackInfo ci) {
         RegionSelectorCommon.explainPrimarySelection(this, player, session, pos, ci);
-    }
-
-    @Inject(method = "explainRegionAdjust", at = @At(value = "INVOKE", target = "Lcom/google/common/base/Preconditions;checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;", ordinal = 1, shift = At.Shift.AFTER))
-    void explainRegionAdjustInjected(Actor player, LocalSession session, CallbackInfo ci) {
-        RegionSelectorCommon.explainRegionAdjust(this, player, session, ci);
     }
 
     @Redirect(method = "explainPrimarySelection", at = @At(value = "INVOKE", target = "Lcom/sk89q/worldedit/math/BlockVector3;toString()Ljava/lang/String;"))

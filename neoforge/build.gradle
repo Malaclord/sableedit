@@ -50,6 +50,7 @@ processResources {
 
     filesMatching('META-INF/neoforge.mods.toml') {
         expand (version: project.version,
+                minecraft_version: minecraft_version,
                 sable_version: sable_version,
                 worldedit_version: worldedit_version,
                 author: mod_author,
