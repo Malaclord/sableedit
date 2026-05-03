@@ -21,7 +21,7 @@ public abstract class CylinderRegionSelectorMixin implements RegionSelectorExten
         RegionSelectorCommon.selectPrimary(this, position, limits, cir);
     }
 
-    @Inject(method = "selectSecondary", at = @At(value = "HEAD"))
+    @Inject(method = "selectSecondary", at = @At(value = "HEAD"), cancellable = true)
     void selectSecondaryInjected(BlockVector3 position, SelectorLimits limits, CallbackInfoReturnable<Boolean> cir) {
         RegionSelectorCommon.selectSecondary(this, position, limits, cir);
     }
