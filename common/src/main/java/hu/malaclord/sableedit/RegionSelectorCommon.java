@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Objects;
 
 public class RegionSelectorCommon {
-    public static void selectPrimary(RegionSelectorExtended selector, BlockVector3 position, SelectorLimits limits, CallbackInfoReturnable<Boolean> cir) {
+    public static void selectPrimary(RegionSelectorExtended selector, BlockVector3 position, SelectorLimits limits, CallbackInfoReturnable<Boolean> ignoredCir) {
         if (changedSublevel(selector, position, true)) {
             if (limits instanceof ActorSelectorLimits actorSelectorLimits) {
                 SubLevelAccess access = Adaptor.getInstance().getContaining(selector.sableEdit$getWorld(), position);
@@ -55,7 +55,7 @@ public class RegionSelectorCommon {
         boolean changed = false;
         if (inPlotGrid) {
             SubLevelAccess access = Adaptor.getInstance().getContaining(selector.sableEdit$getWorld(), position);
-            if (((selector.sableEdit$getCurrentSubLevel() != null) ? selector.sableEdit$getCurrentSubLevel().getUniqueId() : null) != access.getUniqueId()) {
+            if (((selector.sableEdit$getCurrentSubLevel() != null) ? selector.sableEdit$getCurrentSubLevel().getUniqueId() : null) != (access != null ? access.getUniqueId() : null)) {
                 if (primary) selector.sableEdit$setCurrentSubLevel(access);
 
                 changed = true;
@@ -71,11 +71,11 @@ public class RegionSelectorCommon {
         return changed;
     }
 
-    public static void explainPrimarySelection(RegionSelectorExtended selector, Actor player, LocalSession session, BlockVector3 pos, CallbackInfo ci) {
+    public static void explainPrimarySelection(RegionSelectorExtended selector, Actor player, LocalSession session, BlockVector3 ignoredPos, CallbackInfo ignoredCi) {
         explainSelection(selector, player, session);
     }
 
-    public static void explainRegionAdjust(RegionSelectorExtended selector, Actor player, LocalSession session, CallbackInfo ci) {
+    public static void explainRegionAdjust(RegionSelectorExtended selector, Actor player, LocalSession session, CallbackInfo ignoredCi) {
         explainSelection(selector, player, session);
     }
 
@@ -96,10 +96,6 @@ public class RegionSelectorCommon {
             );
             selector.sableEdit$markChangedSublevel(false);
         }
-    }
-
-    public static void explainSecondarySelection() {
-
     }
 
     public static String blockVector3ToString(RegionSelectorExtended selector, BlockVector3 instance) {
