@@ -81,7 +81,8 @@ public class RegionSelectorCommon {
 
     private static void explainSelection(RegionSelectorExtended selector, Actor player, LocalSession session) {
         if (selector.sableEdit$changedSublevel()) {
-            session.dispatchCUISelection(player);
+            if (session.hasCUISupport())
+                session.dispatchCUISelection(player);
 
             player.printInfo(
                     TranslatableComponent.of(
