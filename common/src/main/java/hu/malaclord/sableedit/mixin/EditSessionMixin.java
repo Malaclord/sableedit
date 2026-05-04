@@ -12,6 +12,7 @@ import hu.malaclord.sableedit.Adaptor;
 import hu.malaclord.sableedit.PlayerProxyExtended;
 import hu.malaclord.sableedit.context.LocationContext;
 import hu.malaclord.sableedit.context.SubLevelContext;
+import net.minecraft.world.level.ChunkPos;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
