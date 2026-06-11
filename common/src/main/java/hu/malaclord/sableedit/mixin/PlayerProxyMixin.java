@@ -56,13 +56,13 @@ public class PlayerProxyMixin implements PlayerProxyExtended {
 
     @Redirect(method = "trySetPosition", at = @At(value = "INVOKE", target = "Lcom/sk89q/worldedit/entity/Player;trySetPosition(Lcom/sk89q/worldedit/math/Vector3;FF)Z"))
     boolean trySetPositionInjected(Player instance, Vector3 pos, float pitch, float yaw) {
-        Location loc = sableEdit$getContext().transformBack(new Location(instance.getExtent(), pos, pitch, yaw));
+        Location loc = sableEdit$getContext().transformBack(new Location(instance.getExtent(), pos, yaw, pitch));
         return instance.trySetPosition(loc.toVector(), loc.getPitch(), loc.getYaw());
     }
 
     @Redirect(method = "floatAt", at = @At(value = "INVOKE", target = "Lcom/sk89q/worldedit/entity/Player;floatAt(IIIZ)V"))
     void floatAtInjected(Player instance, int x, int y, int z, boolean b) {
-        Location loc = sableEdit$getContext().transformBack(new Location(instance.getExtent(), new Vector3(x, y, z), instance.getLocation().getPitch(), instance.getLocation().getYaw()));
+        Location loc = sableEdit$getContext().transformBack(new Location(instance.getExtent(), new Vector3(x, y, z),  instance.getLocation().getYaw(), instance.getLocation().getPitch()));
         instance.floatAt(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ(), b);
     }
 }
