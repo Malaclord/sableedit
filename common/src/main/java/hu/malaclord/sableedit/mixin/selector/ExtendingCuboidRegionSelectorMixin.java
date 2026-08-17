@@ -21,7 +21,7 @@ public abstract class ExtendingCuboidRegionSelectorMixin implements RegionSelect
         RegionSelectorCommon.selectPrimary(this, position, limits, cir);
     }
 
-    @Inject(method = "selectSecondary", at = @At("HEAD"))
+    @Inject(method = "selectSecondary", at = @At("HEAD"), cancellable = true)
     void selectSecondaryInjected(BlockVector3 position, SelectorLimits limits, CallbackInfoReturnable<Boolean> cir) {
         RegionSelectorCommon.selectSecondary(this, position, limits, cir);
     }
